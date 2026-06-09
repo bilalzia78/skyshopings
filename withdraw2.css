@@ -1,0 +1,186 @@
+/* Withdraw Page - New Modern Design */
+.withdraw-section {
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 70vh;
+}
+
+.withdraw-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.withdraw-header h2 {
+  font-size: 38px;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.withdraw-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+.withdraw-card {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.w-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid #e9ecef;
+  transition: 0.3s;
+}
+
+.w-card:hover {
+  box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+}
+
+.w-card h3 {
+  font-size: 18px;
+  color: #28a745;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* Form Elements */
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.2s;
+  font-family: Arial;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 0 4px rgba(40,167,69,0.1);
+}
+
+/* Payment Method Cards */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.method-option {
+  cursor: pointer;
+}
+
+.method-option input {
+  display: none;
+}
+
+.method-box {
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px 10px;
+  text-align: center;
+  transition: 0.2s;
+  background: #fafafa;
+}
+
+.method-option input:checked + .method-box {
+  border-color: #28a745;
+  background: #f0fff4;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(40,167,69,0.2);
+}
+
+.method-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.method-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Alert Box */
+.alert-box {
+  background: #fff3cd;
+  color: #856404;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border-left: 4px solid #ffc107;
+  margin-top: 15px;
+}
+
+/* Submit Button */
+.withdraw-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(40,167,69,0.3);
+  margin-top: 10px;
+}
+
+.withdraw-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(40,167,69,0.4);
+}
+
+.secure-text {
+  text-align: center;
+  margin-top: 12px;
+  color: #28a745;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width:768px){
+ .row-2 {
+    grid-template-columns: 1fr;
+  }
+ .method-grid {
+    grid-template-columns: 1fr;
+  }
+ .withdraw-header h2 {
+    font-size: 30px;
+  }
+ .w-card {
+    padding: 22px;
+  }
+}
