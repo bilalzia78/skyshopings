@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+  <link rel="stylesheet" href="style9.css">
+  <link rel="stylesheet" href="withdraw.css">
+ </head>
+<body>
+  <!-- HEADER TUMHARA WALA YAHAN AYEGA -->
+  <header>
+  <div class="logo"></div>
+  <h1>🛍️ SKY SHOPPING</h1>
+   <nav>
+    <a href="Home.html" class="active">Home</a>
+    <a href="products2.html">Products</a>
+    <a href="order2.html">Order</a>
+    <a href="withdraw.html">Account</a>
+    <a href="help.html">Help</a>
+  </nav>
+    </header>
+  <!-- HEADER TUMHARA WALA YAHAN -->
+
+<section class="withdraw-section">
+  <div class="container">
+    
+    <div class="withdraw-header">
+      <h2>💸 Withdraw Request</h2>
+      <p>Apni earning withdraw karein - 24 ghante me payment</p>
+    </div>
+
+    <!-- APNA FORMSPREE LINK YAHAN DALO -->
+    <form class="withdraw-card" action="https://formspree.io/f/mjgzldee" method="POST">
+      <input type="hidden" name="_subject" value="New Withdraw Request - Sky Shopping">
+
+      <!-- 1. Account Info -->
+      <div class="w-card">
+        <h3>1. Account Information 👤</h3>
+        <div class="row-2">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="Name" placeholder="Muhammad Ali" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" name="Phone" placeholder="03XXXXXXXXX" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email / Gmail *</label>
+          <input type="email" name="Email" placeholder="example@gmail.com" required>
+        </div>
+      </div>
+
+      <!-- 2. Withdraw Details -->
+      <div class="w-card">
+        <h3>2. Withdraw Details 💰</h3>
+        <div class="row-2">
+          <div class="form-group">
+            <label>Total Earning Rs.</label>
+            <input type="number" name="Total Earning" placeholder="5000" min="1">
+          </div>
+          <div class="form-group">
+            <label>Withdraw Amount Rs. *</label>
+            <input type="number" name="Withdraw Amount" placeholder="2000" min="100" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Withdraw Reason</label>
+          <textarea name="Reason" placeholder="Kis liye withdraw chahiye - Optional" rows="2"></textarea>
+        </div>
+      </div>
+
+      <!-- 3. Payment Method - Modern Buttons -->
+      <div class="w-card">
+        <h3>3. Payment Method Select Karein 🏦</h3>
+        
+        <div class="method-grid">
+          <label class="method-option">
+            <input type="radio" name="Payment Method" value="Easypaisa" checked>
+            <div class="method-box">
+              <span class="method-icon">📱</span>
+              <span class="method-name">Easypaisa</span>
+            </div>
+          </label>
+          
+          <label class="method-option">
+            <input type="radio" name="Payment Method" value="JazzCash">
+            <div class="method-box">
+              <span class="method-icon">💛</span>
+              <span class="method-name">JazzCash</span>
+            </div>
+          </label>
+          
+          <label class="method-option">
+            <input type="radio" name="Payment Method" value="Bank Account">
+            <div class="method-box">
+              <span class="method-icon">🏦</span>
+              <span class="method-name">Bank</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Account Number Field -->
+        <div class="form-group" style="margin-top:20px;">
+          <label>Account Number / Mobile Number *</label>
+          <input type="text" name="Account Number" placeholder="03XXXXXXXXX ya IBAN" required>
+          <small style="color:#666;">Jis method select kiya uska number likhein</small>
+        </div>
+
+        <div class="form-group">
+          <label>Account Holder Name *</label>
+          <input type="text" name="Account Holder Name" placeholder="CNIC pe jo naam hai" required>
+        </div>
+      </div>
+
+      <!-- 4. CNIC & Note -->
+      <div class="w-card">
+        <h3>4. Verification 🔐</h3>
+        <div class="form-group">
+          <label>CNIC Number *</label>
+          <input type="text" name="CNIC" placeholder="XXXXX-XXXXXXX-X" required>
+        </div>
+        <div class="alert-box">
+          ⚠️ Minimum withdraw Rs. 500 hai. Payment 24-48 ghante me process hogi.
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="withdraw-btn">
+        💸 Withdraw Request Bhejo
+      </button>
+      <p class="secure-text">🔒 Aap ki info encrypted aur secure hai</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER TUMHARA WALA YAHAN -->
+        <a href="https://whatsapp.com/channel/0029Vb8D3UF4tRrqqL95z80B" target="_blank" style="position:fixed; bottom:25px; right:25px; background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow:0 4px 20px rgba(0,0,0,0.3); z-index:999; font-size:14px;">
+  📢 Join Channel
+</a>
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <h3>SKY SHOPPING</h3>
+      <p>
+        Pakistan ka trusted Reseller Platform.
+        Ghar baithe earning start karo, Zero Investment ke sath.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#reseller-benefits">Benefits</a>
+      <a href="#reseller">Join Now</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>📧 support@skyshoping109@gmail.com</p>
+      <p>⏰ 10AM - 10PM</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Sky Shopping. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+</body>
+</html>
