@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+  <link rel="stylesheet" href="style9.css">
+  <link rel="stylesheet" href="withdraw.css">
+</head>
+<body>
+  <!-- HEADER TUMHARA WALA -->
+<header>
+  <div class="logo"></div>
+  <h1>🛍️ SKY SHOPPING</h1>
+    <nav>
+    <a href="Home.html" class="active">Home</a>
+    <a href="products2.html">Products</a>
+    <a href="order2.html">Order</a>
+    <a href="withdraw.html">Account</a>
+    <a href="help.html">Help</a>
+  </nav>
+    </header>
+<section class="order-section">
+  <div class="container">
+    <div class="order-header">
+      <h2>🛒 Order Place Karein</h2>
+      <p>Ghar baithe order karo - 24 ghante me confirmation</p>
+    </div>
+
+    <!-- YAHAN APNA FORMSPREE LINK DALO -->
+    <form class="order-card" action="https://formspree.io/f/mjgzldee" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="New Order - Sky Shopping">
+      <input type="hidden" name="_template" value="box">
+
+      <!-- Product Image -->
+      <div class="form-card">
+        <h3>1. Product code 📸</h3>
+        <label class="upload-box">
+          <input type="text" name="Product code" id="productPic" accept="image/*" required>
+          <div class="upload-text">
+            <span>products code add </span>
+          </div>
+          <img id="picPreview">
+        </label>
+      </div>
+
+      <!-- Size & Quantity -->
+      <div class="form-card">
+        <h3>2. Size & Quantity</h3>
+        <div class="row-2">
+          <div class="form-group">
+            <label>Size Select Karein</label>
+            <select name="Size" required>
+              <option value="N/A">Size Nahi Chahiye</option>
+              <option value="6">Shoe Size 6</option>
+              <option value="7">Shoe Size 7</option>
+              <option value="8">Shoe Size 8</option>
+              <option value="9">Shoe Size 9</option>
+              <option value="10">Shoe Size 10</option>
+              <option value="11">Shoe Size 11</option>
+              <option value="S">Clothes S</option>
+              <option value="M">Clothes M</option>
+              <option value="L">Clothes L</option>
+              <option value="XL">Clothes XL</option>
+              <option value="XXL">Clothes XXL</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quantity</label>
+            <select name="Quantity" id="quantity" required>
+              <option value="1">1 Piece</option>
+              <option value="2">2 Pieces</option>
+              <option value="3">3 Pieces</option>
+              <option value="4">4 Pieces</option>
+              <option value="5">5 Pieces</option>
+              <option value="10">10 Pieces</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Details -->
+      <div class="form-card">
+        <h3>3. Delivery Information 🚚</h3>
+        <div class="row-2">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="Customer Name" placeholder="Muhammad Ali" required>
+           <div class="form-group">
+  <label>Product Name</label>
+  <input type="text" id="productName" name="Product Name" readonly>
+</div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <!-- PATTERN HATA DIYA - AB KOI BHI FORMAT CHALEGA -->
+            <input type="tel" name="Phone" placeholder="03XX-XXXXXXX ya 03XXXXXXXXX" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>WhatsApp Number *</label>
+          <input type="tel" name="WhatsApp" placeholder="03XX-XXXXXXX ya 03XXXXXXXXX" required>
+        </div>
+
+        <div class="form-group">
+          <label>Mukammal Address *</label>
+          <textarea name="Full Address" placeholder="House No, Street, Area, City" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Near Mashoor Jaga *</label>
+          <input type="text" name="Landmark" placeholder="e.g. Main Bazar Masjid ke samne" required>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="form-card">
+        <h3>4. Price & Payment 💰</h3>
+        <div class="form-group">
+          <label>Product Price Rs. *</label>
+          <input type="number" name="Product Price" id="price" placeholder="1500" min="1" required>
+        </div>
+
+        <label>Payment Method Select Karein *</label>
+        <div class="payment-grid">
+          <label class="pay-option">
+            <input type="radio" name="Payment Method" value="Cash on Delivery" checked>
+            <span>💵 Cash on Delivery</span>
+            <small>Parcel milne pe payment</small>
+          </label>
+          <label class="pay-option">
+            <input type="radio" name="Payment Method" value="Advance Payment">
+            <span>💳 Advance Payment</span>
+            <small>Easypaisa/JazzCash</small>
+          </label>
+        </div>
+        <p class="alert-note">⚠️ Delivery charges Rs. 200 advance dene honge - COD ho ya Advance</p>
+      </div>
+
+      <!-- Total Box -->
+      <input type="hidden" name="Total Amount" id="totalHidden">
+      <div class="total-card">
+        <div class="total-row">
+          <span>Product Total:</span>
+          <span>Rs. <b id="showPrice">0</b></span>
+        </div>
+        <div class="total-row">
+          <span>Delivery Charges:</span>
+          <span>Rs. 200 <small>Advance</small></span>
+        </div>
+        <div class="total-row grand-total">
+          <span>Total Amount:</span>
+          <span>Rs. <b id="totalAmount">200</b></span>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">✅ Order Confirm Karo</button>
+      <p class="trust-text">🔒 Aap ki info 100% secure hai</p>
+    </form>
+  </div>
+</section>
+
+
+  <a href="https://whatsapp.com/channel/0029Vb8D3UF4tRrqqL95z80B" target="_blank" style="position:fixed; bottom:25px; right:25px; background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow:0 4px 20px rgba(0,0,0,0.3); z-index:999; font-size:14px;">
+  📢 Join Channel
+</a>
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <h3>SKY SHOPPING</h3>
+      <p>
+        Pakistan ka trusted Reseller Platform.
+        Ghar baithe earning start karo, Zero Investment ke sath.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#reseller-benefits">Benefits</a>
+      <a href="#reseller">Join Now</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>📧 support@skyshoping109@gmail.com</p>
+      <p>⏰ 10AM - 10PM</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Sky Shopping. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
+<script>
+// Total Calculation
+function calculateTotal() {
+  const price = parseFloat(document.getElementById('price').value) || 0;
+  const qty = parseInt(document.getElementById('quantity').value) || 1;
+  const total = (price * qty) + 200;
+
+  document.getElementById('showPrice').textContent = price * qty;
+  document.getElementById('totalAmount').textContent = total;
+  document.getElementById('totalHidden').value = total;
+}
+
+document.getElementById('price').addEventListener('input', calculateTotal);
+document.getElementById('quantity').addEventListener('change', calculateTotal);
+
+// Product Auto Fill From Products Page
+const productData = JSON.parse(localStorage.getItem("selectedProduct"));
+
+if(productData){
+
+    document.getElementById("productPic").value =
+    productData.code;
+
+    document.getElementById("price").value =
+    productData.price;
+
+    const productNameField =
+    document.getElementById("productName");
+
+    if(productNameField){
+        productNameField.value = productData.name;
+    }
+
+    calculateTotal();
+}
+
+</script>
+</body>
+</html>
