@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Sky Shopping</title>
+  <link rel="stylesheet" href="style9.css">
+</head>
+<body>
+
+<header>
+  <div class="logo"></div>
+  <h1>SKY SHOPPING</h1>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="products2.html">Products</a>
+    <a href="order2.html">Order</a>
+    <a href="withdraw.html">Account</a>
+    <a href="help.html">Help</a>
+  </nav>
+</header>
+
+<section class="products">
+
+  <div class="card">
+    <img src="pic1.jpg" alt="Product">
+    <div class="card-content">
+      <h3>Women's Light Blue Embroidered Kurta Set</h3>
+      <p class="code">Code: P001</p>
+      <p class="price">Rs. 4000</p>
+      <p>Digital Print Number of Pieces 3Pcs Package Includes 1x Shirt 1x Trouser 1x Dupatta</p>
+
+      <div class="btns">
+        <button class="btn share" onclick="shareProduct('Women\'s Light Blue Embroidered Kurta Set')">
+          Share
+        </button>
+        <button class="btn download" onclick="downloadInfo('Women\'s Light Blue Embroidered Kurta Set','4000')">
+          Download
+        </button>
+        <button class="btn order" onclick="orderNow('P001','Women\'s Light Blue Embroidered Kurta Set','4000')">
+          Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="product2.jpg" alt="Product">
+    <div class="card-content">
+      <h3>Smart Watch</h3>
+      <p class="code">Code: P002</p>
+      <p class="price">Rs. 1800</p>
+      <p>Stylish smart watch.</p>
+
+      <div class="btns">
+        <button class="btn share" onclick="shareProduct('Smart Watch')">
+          Share
+        </button>
+        <button class="btn download" onclick="downloadInfo('Smart Watch','1800')">
+          Download
+        </button>
+        <button class="btn order" onclick="orderNow('P002','Smart Watch','1800')">
+          Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="product3.jpg" alt="Product">
+    <div class="card-content">
+      <h3>Leather Bag</h3>
+      <p class="code">Code: P003</p>
+      <p class="price">Rs. 2200</p>
+      <p>High quality leather bag.</p>
+
+      <div class="btns">
+        <button class="btn share" onclick="shareProduct('Leather Bag')">
+          Share
+        </button>
+        <button class="btn download" onclick="downloadInfo('Leather Bag','2200')">
+          Download
+        </button>
+        <button class="btn order" onclick="orderNow('P003','Leather Bag','2200')">
+          Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER TUMHARA WALA YAHAN -->
+        <a href="https://whatsapp.com/channel/0029Vb8D3UF4tRrqqL95z80B" target="_blank" style="position:fixed; bottom:25px; right:25px; background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow:0 4px 20px rgba(0,0,0,0.3); z-index:999; font-size:14px;">
+  📢 Join Channel
+</a>
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <h3>SKY SHOPPING</h3>
+      <p>
+        Pakistan ka trusted Reseller Platform.
+        Ghar baithe earning start karo, Zero Investment ke sath.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#reseller-benefits">Benefits</a>
+      <a href="#reseller">Join Now</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>📧 support@skyshoping109@gmail.com</p>
+      <p>⏰ 10AM - 10PM</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Sky Shopping. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+<script>
+function shareProduct(name){
+  const message = "Check this product: " + name;
+  window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+}
+
+function downloadInfo(name, price){
+  const text = `Product: ${name}\nPrice: Rs ${price}`;
+  const blob = new Blob([text], {type: "text/plain"});
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = name + ".txt";
+  link.click();
+}
+
+function orderNow(code, name, price){
+  const product = { code: code, name: name, price: price };
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  window.location.href = "order2.html";
+}
+</script>
+
+</body>
+</html>
