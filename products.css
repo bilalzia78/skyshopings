@@ -50,8 +50,11 @@ nav a.active {
 
 .card img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  aspect-ratio: 4/5;      /* 4:5 Ratio = Instagram wala size. Mobile pe best lagta */
+  object-fit: cover;      /* Wapis cover kiya, lekin crop smart hoga */
+  object-position: center top; /* Chehra/Center upar se crop hoga, paon nahi katega */
+  background: #f9f9f9;
+  display: block;
 }
 
 .card-content {
