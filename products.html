@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Sky Shopping</title>
+  <link rel="stylesheet" href="style9.css">
+  <style>
+    /* IMAGE FIX - Ye naya CSS add kiya hai */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .card img {
+      width: 100% !important;
+      height: 300px !important;
+      object-fit: contain !important; /* Image khinchegi nahi, set rahegi */
+      background: #f9f9f9;
+      padding: 10px;
+    }
+    .card-content { padding: 15px; }
+    .btns { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .btn { flex: 1; padding: 8px; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold; }
+    .btn.share { background: #e0f2f1; color: #00796b; }
+    .btn.download { background: #fff3e0; color: #e65100; }
+    .btn.order { background: goldenrod; color: white; }
+    
+    @media(max-width:768px){
+      .products { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 10px; }
+      .card img { height: 180px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"></div>
+  <h1>SKY SHOPING</h1>
+  <nav>
+    <a href="home32.html">Home</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="order.html">Order</a>
+    <a href="withdraw.html">Account</a>
+    <a href="help.html">Help</a>
+     <a href="about.html">about us</a>
+  </nav>
+</header>
+
+<!-- Products Section - SIRF 1 BAAR -->
+<section class="products">
+
+  <div class="card">
+    <img src="pic1.jpg" alt="Kurta">
+    <div class="card-content">
+      <h3>Women's Light Blue Embroidered Kurta Set</h3>
+      <p class="code">Code: P001</p>
+      <p class="price" style="color:goldenrod; font-weight:bold;">Rs. 4000</p>
+      <p style="font-size:13px; color:#666;">Digital Print | 3Pcs Package</p>
+      <div class="btns">
+        <button class="btn share" onclick="shareProduct('Kurta Set')">Share</button>
+        <button class="btn download" onclick="downloadInfo('Kurta Set','4000')">Download</button>
+        <button class="btn order" onclick="orderNow('P001','Kurta Set','4000')">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="BNB.jpg" alt="Watch">
+    <div class="card-content">
+      <h3>Smart Watch</h3>
+      <p class="code">Code: P002</p>
+      <p class="price" style="color:goldenrod; font-weight:bold;">Rs. 1800</p>
+      <p style="font-size:13px; color:#666;">Stylish smart watch with fitness tracking</p>
+      <div class="btns">
+        <button class="btn share" onclick="shareProduct('Smart Watch')">Share</button>
+        <button class="btn download" onclick="downloadInfo('Smart Watch','1800')">Download</button>
+        <button class="btn order" onclick="orderNow('P002','Smart Watch','1800')">Order</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://raw.githubusercontent.com/USERNAME/sky-images/main/part%20c14.jpg" alt="Bag">
+    <div class="card-content">
+      <h3>Leather Bag</h3>
+      <p class="code">Code: P003</p>
+      <p class="price" style="color:goldenrod; font-weight:bold;">Rs. 2200</p>
+      <p style="font-size:13px; color:#666;">High quality premium leather bag</p>
+      <div class="btns">
+        <button class="btn share" onclick="shareProduct('Leather Bag')">Share</button>
+        <button class="btn download" onclick="downloadInfo('Leather Bag','2200')">Download</button>
+        <button class="btn order" onclick="orderNow('P003','Leather Bag','2200')">Order</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<a href="https://whatsapp.com/channel/0029Vb8D3UF4tRrqqL95z80B" target="_blank" style="position:fixed; bottom:25px; right:25px; background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow:0 4px 20px rgba(0,0,0,0.3); z-index:999; font-size:14px;">📢 Join Channel</a>
+
+<footer>
+  <div class="footer-grid">
+    <div><h3>SKY SHOPING</h3><p>Pakistan ka trusted Reseller Platform.</p></div>
+    <div><h4>Quick Links</h4><a href="home32.html">Home</a><a href="products.html">Products</a></div>
+    <div><h4>Contact</h4><p>📧 support@skyshoping109@gmail.com</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Sky Shopping. All Rights Reserved.</p></div>
+</footer>
+
+<script>
+function shareProduct(name){
+  window.open("https://wa.me/?text=" + encodeURIComponent("Check this on Sky Shopping: " + name), "_blank");
+}
+function downloadInfo(name, price){
+  const blob = new Blob([`Product: ${name}\nPrice: Rs ${price}`], {type: "text/plain"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name + ".txt"; a.click();
+}
+function orderNow(code, name, price){
+  localStorage.setItem("selectedProduct", JSON.stringify({code, name, price}));
+  window.location.href = "order.html";
+}
+</script>
+
+</body>
+</html>
