@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account - Sky Shopping</title>
+<link rel="stylesheet" href="style9.css">
+  
+<style>
+body{background:#f5f7fa; font-family:Arial; margin:0}
+header{background:#111; color:white; padding-top:45px; display:fx; justify-content:space-between; align-items:center}
+header h1{font-size:30px; margin:0}
+header nav a{color:#white; margin-left:12px; text-decoration:none; font-size:14px}
+header nav a.active{color:white; font-weight:bold}
+.account-container{max-width:1000px; margin:auto; padding:15px}
+
+/* Profile Card */
+.profile-card{background:white; border-radius:16px; padding:20px; display:flex; align-items:center; gap:15px; box-shadow:0 4px 15px rgba(0,0,0,0.08); margin-bottom:15px}
+.profile-avatar{width:70px; height:70px; border-radius:50%; background:goldenrod; color:white; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:bold}
+.profile-info h2{margin:0; font-size:18px}
+.profile-info p{margin:4px 0; color:#666; font-size:13px}
+.badge{background:#e8f5e9; color:#2e7d32; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:bold}
+
+/* Stats Grid */
+.stats-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:15px}
+.stat-box{background:white; border-radius:12px; padding:15px; box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.stat-box h4{margin:0; color:#666; font-size:12px; font-weight:normal}
+.stat-box h3{margin:6px 0 0; font-size:20px}
+.stat-box.earning h3{color:#2e7d32}
+.stat-box.pending h3{color:#ef6c00}
+.stat-box.orders h3{color:#1565c0}
+.stat-box.balance h3{color:goldenrod}
+
+/* Sections */
+.section-card{background:white; border-radius:12px; padding:18px; margin-bottom:15px; box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.section-card h3{margin:0 0 12px; font-size:16px; border-left:4px solid goldenrod; padding-left:8px}
+
+.input-row{display:flex; gap:10px; margin-top:10px}
+.input-row input{flex:1; padding:12px; border:1px solid #ddd; border-radius:8px}
+.btn-main{background:goldenrod; color:white; border:none; padding:12px 20px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%; margin-top:10px}
+.btn-outline{border:1px solid goldenrod; color:goldenrod; background:white; padding:10px; border-radius:8px; width:100%; font-weight:bold; cursor:pointer}
+
+.order-item{display:flex; justify-content:space-between; border-bottom:1px solid #f0f0f0; padding:10px 0; font-size:14px}
+.order-item:last-child{border:none}
+
+.refer-box{background:#fff8e1; border:1px dashed goldenrod; border-radius:8px; padding:12px; display:flex; justify-content:space-between; align-items:center; margin-top:10px}
+
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"></div>
+  <h1>SKY SHOPPING</h1>
+  <nav>
+    <a href="home32.html">Home</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="order.html">Order</a>
+    <a href="withdraw.html">Account</a>
+    <a href="help.html">Help</a>
+     <a href="about.html">About us</a>
+  </nav>
+</header>
+<div class="account-container">
+
+  <!-- Profile -->
+  <div class="profile-card">
+    <div class="profile-avatar">S</div>
+    <div class="profile-info">
+      <h2 id="userName">Sky User</h2>
+      <p id="userEmail">support@skyshoping109@gmail.com</p>
+      <p><span class="badge">✔ Verified Reseller</span></p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-box earning">
+      <h4>Total Earning</h4>
+      <h3>Rs. <span id="totalEarn">12,500</span></h3>
+      <p style="font-size:11px; color:#666; margin:4px 0 0;">Lifetime</p>
+    </div>
+    <div class="stat-box balance">
+      <h4>Available Balance</h4>
+      <h3>Rs. <span id="availableBal">3,200</span></h3>
+      <p style="font-size:11px; color:#666; margin:4px 0 0;">Withdrawable</p>
+    </div>
+    <div class="stat-box pending">
+      <h4>Pending Withdraw</h4>
+      <h3>Rs. <span id="pendingW">1,800</span></h3>
+      <p style="font-size:11px; color:#666; margin:4px 0 0;">Processing</p>
+    </div>
+    <div class="stat-box orders">
+      <h4>Total Orders</h4>
+      <h3><span id="totalOrders">24</span></h3>
+      <p style="font-size:11px; color:#666; margin:4px 0 0;">Completed</p>
+    </div>
+  </div>
+
+  <!-- Withdraw Section -->
+  <div class="section-card">
+    <h3>💸 Withdraw Earning</h3>
+    <p style="font-size:13px; color:#666;">Minimum withdraw Rs. 500. Payment via JazzCash / EasyPaisa in 24 hours.</p>
+    
+    <div class="input-row">
+      <input type="number" id="withdrawAmount" placeholder="Enter amount (e.g. 1000)">
+    </div>
+    <div class="input-row">
+      <input type="text" id="accountNumber" placeholder="JazzCash / EasyPaisa Number">
+    </div>
+    <button class="btn-main" onclick="requestWithdraw()">Request Withdraw</button>
+
+    <div id="withdrawHistory" style="margin-top:15px;">
+      <div class="order-item"><span>10 Oct - Rs. 2000</span><span style="color:green; font-weight:bold;">Paid</span></div>
+      <div class="order-item"><span>25 Oct - Rs. 1800</span><span style="color:orange; font-weight:bold;">Pending</span></div>
+    </div>
+  </div>
+
+  <!-- My Orders -->
+  <div class="section-card">
+    <h3>📦 My Recent Orders</h3>
+    <div id="orderList">
+      <div class="order-item"><span>P001 - Kurta Set</span><span>Rs. 4000</span></div>
+      <div class="order-item"><span>P002 - Smart Watch</span><span>Rs. 1800</span></div>
+    </div>
+    <button class="btn-outline" style="margin-top:10px;" onclick="window.location.href='order2.html'">View All Orders</button>
+  </div>
+
+  <!-- Referral -->
+  <div class="section-card">
+    <h3>👥 Refer & Earn</h3>
+    <p style="font-size:13px; color:#666;">Har referral pe Rs. 200 bonus milega.</p>
+    <div class="refer-box">
+      <span id="referLink" style="font-size:12px;">https://skyshopping.com/ref?user=109</span>
+      <button onclick="copyRefer()" style="background:goldenrod; color:white; border:none; padding:6px 12px; border-radius:6px; font-weight:bold; cursor:pointer;">Copy</button>
+    </div>
+  </div>
+
+  <button class="btn-outline" style="background:#fee; border-color:#f55; color:#c00; margin-top:10px;" onclick="logout()">Logout Account</button>
+
+</div>
+  <a href="https://whatsapp.com/channel/0029Vb8D3UF4tRrqqL95z80B" target="_blank" style="position:fixed; bottom:25px; right:25px; background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow:0 4px 20px rgba(0,0,0,0.3); z-index:999; font-size:14px;">📢 Join Channel</a>
+
+<footer>
+  <div class="footer-grid">
+    <div><h3>SKY SHOPPING</h3><p>Pakistan ka trusted Reseller Platform.</p></div>
+    <div><h4>Quick Links</h4><a href="home32.html">Home</a><a href="products2.html">Products</a></div>
+    <div><h4>Contact</h4><p>📧 support@skyshoping109@gmail.com</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Sky Shopping. All Rights Reserved.</p></div>
+</footer>
+
+
+<script>
+// Load from localStorage
+document.getElementById('userName').innerText = localStorage.getItem('userName') || 'Sky User';
+let orders = JSON.parse(localStorage.getItem('myOrders') || '[]');
+if(orders.length > 0){
+  document.getElementById('orderList').innerHTML = orders.map(o => 
+    `<div class="order-item"><span>${o.code} - ${o.name}</span><span>Rs. ${o.price}</span></div>`
+  ).join('');
+  document.getElementById('totalOrders').innerText = orders.length;
+}
+
+function requestWithdraw(){
+  let amt = document.getElementById('withdrawAmount').value;
+  let acc = document.getElementById('accountNumber').value;
+  if(!amt || !acc){ alert('Amount aur Account Number likho'); return; }
+  if(amt < 500){ alert('Minimum Rs. 500 withdraw'); return; }
+  alert('Withdraw Request Sent! Rs. '+amt+' to '+acc+'\n24 hours me payment hogi.');
+  document.getElementById('pendingW').innerText = parseInt(document.getElementById('pendingW').innerText) + parseInt(amt);
+}
+
+function copyRefer(){
+  navigator.clipboard.writeText(document.getElementById('referLink').innerText);
+  alert('Referral Link Copied!');
+}
+
+function logout(){
+  if(confirm('Logout karna hai?')){
+    localStorage.clear();
+    window.location.href = 'home32.html';
+  }
+}
+</script>
+
+</body>
+</html>
