@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order - Sky Shopping</title>
+  <link rel="stylesheet" href="style9.css">
+  <link rel="stylesheet" href="withdraw.css">
+  <style>
+    .profit-summary{background:#fff8e1; border:1px dashed goldenrod; border-radius:10px; padding:12px; margin:10px 0}
+    .profit-summary div{display:flex; justify-content:space-between; padding:4px 0; font-size:14px}
+    .profit-input{width:100%; padding:12px; border:2px solid goldenrod; border-radius:8px; font-weight:bold; font-size:16px; margin-top:6px; box-sizing:border-box}
+    .no-product{display:none; background:#ffebee; color:#c62828; padding:12px; border-radius:8px; margin-bottom:12px; text-align:center}
+    .no-product a{color:#c62828; font-weight:bold}
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo"></div>
+  <h1>🛍️ SKY SHOPING</h1>
+    <nav>
+    <a href="home32.html" class="active">Home</a>
+    <a href="products.html">products</a>
+    <a href="order.html">Order</a>
+      <a href="withdraw.html">Account</a>
+    <a href="help.html">Help</a>
+       <a href="about.html">about us</a>
+  </nav>
+</header>
+
+<section class="order-section">
+  <div class="container">
+    <div class="order-header">
+      <h2>🛒 Order Place Karein</h2>
+      <p>Ghar baithe order karo - 24 ghante me confirmation</p>
+    </div>
+
+    <div class="no-product" id="noProduct">
+      Pehle koi product select karein. <a href="products.html">Products dekhein →</a>
+    </div>
+
+    <form class="order-card" id="orderForm" action="https://formspree.io/f/mjgzldee" method="POST" onsubmit="return saveOrderToAccount()">
+      <input type="hidden" name="_subject" value="New Order - Sky Shopping">
+
+      <div class="form-card">
+        <h3>1. Product Details 📦</h3>
+
+        <div class="form-group">
+          <label>Product Code</label>
+          <input type="text" name="Product Code" id="productCode" readonly>
+        </div>
+        <div class="form-group">
+          <label>Product Name</label>
+          <input type="text" name="Product Name" id="productName" readonly>
+        </div>
+
+        <div class="profit-summary">
+          <div><span>Base Price (Hamari Price):</span><span>Rs. <b id="basePriceShow">0</b></span></div>
+
+          <div style="display:block; margin-top:10px; border-top:1px solid #f0d27a; padding-top:10px;">
+            <label style="font-weight:bold; font-size:14px;">💰 Apna Profit Yahan Likho (Rs. per piece)</label>
+            <input type="number" id="profitInput" class="profit-input" value="500" min="0" placeholder="e.g. 500" oninput="calculate()">
+          </div>
+
+          <div style="border-top:1px solid goldenrod; margin-top:10px; padding-top:10px; font-size:16px;">
+            <span>Selling Price (Customer Price):</span>
+            <span style="color:green; font-weight:bold;">Rs. <b id="sellingPriceShow">0</b></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Final Selling Price (Base + Profit)</label>
+          <input type="number" name="Product Price" id="price" readonly style="background:#f0f0f0; font-weight:bold;">
+        </div>
+        <input type="hidden" name="Base Price" id="hiddenBase">
+        <input type="hidden" name="My Profit" id="hiddenProfit">
+      </div>
+
+      <div class="form-card">
+        <h3>2. Size & Quantity</h3>
+        <div class="row-2">
+          <div class="form-group">
+            <label>Size Select Karein</label>
+            <select name="Size" required>
+              <option value="N/A">Size Nahi Chahiye</option>
+              <option value="6">Shoe Size 6</option>
+              <option value="7">Shoe Size 7</option>
+              <option value="8">Shoe Size 8</option>
+              <option value="9">Shoe Size 9</option>
+              <option value="10">Shoe Size 10</option>
+              <option value="11">Shoe Size 11</option>
+              <option value="S">Clothes S</option>
+              <option value="M">Clothes M</option>
+              <option value="L">Clothes L</option>
+              <option value="XL">Clothes XL</option>
+              <option value="XXL">Clothes XXL</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quantity</label>
+            <select name="Quantity" id="quantity" onchange="calculate()" required>
+              <option value="1">1 Piece</option>
+              <option value="2">2 Pieces</option>
+              <option value="3">3 Pieces</option>
+              <option value="4">4 Pieces</option>
+              <option value="5">5 Pieces</option>
+              <option value="10">10 Pieces</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>3. Delivery Information 🚚</h3>
+        <div class="form-group"><label>Full Name *</label><input type="text" name="Customer Name" placeholder="Muhammad Ali" required></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" name="Phone" placeholder="03XX-XXXXXXX" required></div>
+        <div class="form-group"><label>WhatsApp Number *</label><input type="tel" name="WhatsApp" placeholder="03XX-XXXXXXX" required></div>
+        <div class="form-group"><label>Mukammal Address *</label><textarea name="Full Address" rows="3" required></textarea></div>
+      </div>
+
+      <input type="hidden" name="Total Amount" id="totalHidden">
+      <input type="hidden" name="Total Profit" id="profitHidden">
+
+      <div class="total-card">
+        <div class="total-row"><span>Selling Price x Qty:</span><span>Rs. <b id="showPrice">0</b></span></div>
+        <div class="total-row grand-total"><span>Total Amount (Customer se lena hai):</span><span>Rs. <b id="totalAmount">0</b></span></div>
+        <div class="total-row" style="color:green;"><span>Aapka Total Profit:</span><span>Rs. <b id="showMyTotalProfit">0</b></span></div>
+      </div>
+
+      <button type="submit" class="submit-btn">✅ Order Confirm Karo</button>
+      <p class="trust-text">🔒 Aap ki info 100% secure hai</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div><h3>SKY SHOPING</h3><p>Pakistan ka trusted Reseller Platform.</p></div>
+    <div><h4>Quick Links</h4><a href="home32.html">Home</a><a href="products.html">Products</a></div>
+    <div><h4>Contact</h4><p>📧 skyshopping109@gmail.com</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Sky Shopping. All Rights Reserved.</p></div>
+</footer>
+
+<script>
+var product = null;
+try { product = JSON.parse(localStorage.getItem("selectedProduct")); } catch (e) {}
+
+function num(v) { var n = parseFloat(v); return isNaN(n) || n < 0 ? 0 : n; }
+
+function init() {
+  if (!product || !product.code) {
+    document.getElementById("noProduct").style.display = "block";
+    document.getElementById("orderForm").style.display = "none";
+    return;
+  }
+  document.getElementById("productCode").value = product.code;
+  document.getElementById("productName").value = product.name;
+  document.getElementById("basePriceShow").textContent = num(product.price);
+  document.getElementById("hiddenBase").value = num(product.price);
+
+  // Pichla profit yaad rakho
+  var saved = localStorage.getItem("lastProfit");
+  if (saved !== null) document.getElementById("profitInput").value = saved;
+
+  calculate();
+}
+
+function calculate() {
+  if (!product) return;
+  var base = num(product.price);
+  var profit = num(document.getElementById("profitInput").value);
+  var qty = parseInt(document.getElementById("quantity").value, 10) || 1;
+
+  var selling = base + profit;
+  var total = selling * qty;
+  var totalProfit = profit * qty;
+
+  document.getElementById("sellingPriceShow").textContent = selling;
+  document.getElementById("price").value = selling;
+  document.getElementById("hiddenProfit").value = profit;
+  document.getElementById("showPrice").textContent = total;
+  document.getElementById("totalAmount").textContent = total;
+  document.getElementById("showMyTotalProfit").textContent = totalProfit;
+  document.getElementById("totalHidden").value = total;
+  document.getElementById("profitHidden").value = totalProfit;
+}
+
+function saveOrderToAccount() {
+  calculate();
+  var profit = num(document.getElementById("profitInput").value);
+  var qty = parseInt(document.getElementById("quantity").value, 10) || 1;
+  var f = document.getElementById("orderForm");
+
+  var order = {
+    id: "ORD" + Date.now(),
+    date: new Date().toLocaleString(),
+    code: product.code,
+    name: product.name,
+    base: num(product.price),
+    profit: profit,
+    qty: qty,
+    total: (num(product.price) + profit) * qty,
+    totalProfit: profit * qty,
+    customer: f.elements["Customer Name"].value,
+    status: "Pending"
+  };
+
+  try {
+    var orders = JSON.parse(localStorage.getItem("orders") || "[]");
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+    localStorage.setItem("lastProfit", profit);
+  } catch (e) {}
+
+  return true; // form Formspree par submit hoga
+}
+
+init();
+</script>
+</body>
+</html>
+
